@@ -77,12 +77,12 @@ class Main(MDApp):
         global text_ready
         global time_finish
         text_input = self.root.ids.Messeg_Vvely_id.text.encode('utf-8')
-        print("utf8", text_input)
+        #print("utf8", text_input)
         text_key= self.root.ids.Key_Vvely_id.text
         text_key = text_key[0:15]
         text_key = control_key(text_key)
         
-        print(text_input,"-----",text_key)
+        #print(text_input,"-----",text_key)
 
         time_before = time.time()
         crypted_data = []
@@ -101,17 +101,15 @@ class Main(MDApp):
                 temp.append(1)
                 crypted_part = MY_AES128.encrypt(temp, text_key)
                 crypted_data.extend(crypted_part)
-        print (crypted_data)
-        print("Последний этап",bytes(crypted_data))
+        #print (crypted_data)
+        #print("Последний этап",bytes(crypted_data))
 
         text_ready = bytes(crypted_data)
-        #text_ready = binascii.hexlify("".join(map(str,crypted_data)).encode()) #chr(i) for i in 
         text_ready = binascii.hexlify(text_ready)
-        #print("смотри тут ",bytes(binascii.unhexlify(text_ready))," ",binascii.unhexlify(text_ready).decode() )
-        print("Готово",text_ready)
+        #print("Готово",text_ready)
         time_after = time.time()
         time_finish = time_after - time_before
-        print(time_finish)
+        #print(time_finish)
     
     def messeg_v_result_for_messege(self, otvet):  #Для записси в строку с ответом ENCODE
         otvet.text = text_ready
@@ -125,15 +123,14 @@ class Main(MDApp):
         global text_key_shifr
         global time_finish2
         text_input_shifr = self.root.ids.Shifr_Vvely_id.text.encode('utf-8')
-        print("text_input_shifr",text_input_shifr )
-        print(type(text_input_shifr))
+        #print("text_input_shifr",text_input_shifr )
+        #print(type(text_input_shifr))
         text_input_shifr = binascii.unhexlify(text_input_shifr)
-        print(type(text_input_shifr))
-        print("bytes",text_input_shifr )
+        #print(type(text_input_shifr))
+        #print("bytes",text_input_shifr )
         text_key_shifr = self.root.ids.Key_Shifr_Vvely_id.text[0:15]
         text_key_shifr = control_key(text_key_shifr)
-        #text_key_shifr = text_key_shifr
-        print(text_input_shifr,"-----",text_key_shifr)
+        #print(text_input_shifr,"-----",text_key_shifr)
         time_before = time.time()
         decrypted_data = []
         temp = []
@@ -151,14 +148,14 @@ class Main(MDApp):
                 temp.append(1)
                 decrypted_part = MY_AES128.encrypt(temp, text_key_shifr)
                 decrypted_data.extend(decrypted_part) 
-        print("decrypted_data",decrypted_data)
-        print(bytes(decrypted_data))
+        #print("decrypted_data",decrypted_data)
+        #print(bytes(decrypted_data))
         text_input_shifr = bytes(decrypted_data)
-        print("выход",text_input_shifr)
+        #print("выход",text_input_shifr)
        
         time_after = time.time()
         time_finish2 = time_after - time_before
-        print(time_finish2)
+        #print(time_finish2)
         
     
     
