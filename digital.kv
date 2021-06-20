@@ -1,0 +1,253 @@
+<Digt>:
+    MDScreen:
+        id: Hellow
+        name: "Hellow"
+        BoxLayout:
+            orientation: 'vertical'
+            MDToolbar:
+                id: toolbar_Hellow
+                md_bg_color: .945,.937,.94,.7
+                pos_hint: {"top": 1}
+                elevation: 10
+                title: "Шифр AES 128" #root.Toolbar_Hellow_Text()
+                specific_text_color: .55, .32, .61, .96
+            MDBottomNavigation:
+                text_color_active: .55, .32, .61, .96
+                text_color_normal: .945,.937,.94,.7
+                panel_color:[0.2980392156862745, 0.2823529411764706, 0.32941176470588235, 1]
+                halign: "start"
+ 
+
+                MDBottomNavigationItem:
+                    id: Screen_Hellow
+                    name: "Screen_Hellow"
+                    text: "Inf"
+                    icon: 'information'
+                    FitImage:
+                        source: "Dracula.jpg"
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: 0.2
+                        height: self.minimum_height
+                        padding: dp(20)
+                        spacing: dp(10)
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        MDLabel:
+                            canvas.before:
+                                Color:
+                                    rgba: (0, 0, 0, 0.1)  
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+                            text: "Добро пожаловать! \n Данная программа предназначена для шифрования ваших сообщений по стандарту AES 128"
+                            halign: "center"
+                            font_style: "Button"
+                            size_hint_y: None
+                        MDLabel:
+                            id: Instraction
+                            text: root.InstractionText()
+                            halign: "left"
+                            font_style: "Body1"
+                            size_hint_y: None
+                            
+             
+                MDBottomNavigationItem:
+                    id: Encoding
+                    name: "Screen _Encoding"
+                    text: "Encoding"
+                    icon: 'alpha-e-circle-outline'
+                    FitImage:
+                        source: "Dracula.jpg"
+                    
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        adaptive_size: True
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        padding: "30dp"
+                        spacing: "10dp"
+
+                        MDLabel:
+                            id: Inf_Message
+                            text: "ENCODING"
+                            font_style: "H5"
+                            size_hint_y: None
+                            height:"50dp"
+                            halign: "center"
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            adaptive_size: True
+                            pos_hint: {'center_x': .5, 'center_y': .5}
+                            padding: "30dp"
+                            spacing: "10dp"
+                            MDTextField:
+                                id: Messeg_Vvely_id
+                                hint_text: "Введите сообщение для шифрации"
+                                helper_text: "Не забудь заполнить ключ ниже."
+                                helper_text_mode: "on_focus"
+                                size_hint_y: None
+                                halign: "center"
+                                font_size:'20sp'
+                                size_hint_x: None
+                                width: 300
+
+                                max_height: "200dp"
+                                mode: "fill"
+                                multiline: True
+                            MDTextField:
+                                id: Key_Vvely_id
+                                hint_text: "Введите ключ(не более 16 символов)"
+                                helper_text: "По готовности нажмите на кнопку ниже."
+                                max_text_length: 16
+                                helper_text_mode: "on_focus"
+                                size_hint_y: None
+                                halign: "center"
+                                font_size:'20sp'
+                                size_hint_x: None
+                                width: 300
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                adaptive_size: True
+                                pos_hint: {'center_x': .5, 'center_y': .5}
+                                padding: "30dp"
+                                spacing: "10dp"
+                                MDRaisedButton:
+                                    id: Encoding_Button
+                                    text: "ENCODING"
+                                    size_hint_y: None
+                                    halign: "center"
+                                    on_release: 
+                                        root.current = "result"
+                                        app.get_text_inputs()
+                                        app.messeg_v_result_for_messege(Otvet)
+                                        app.messeg_for_oshibka_Encode(Infa)
+                                        app.time_Encod(Time)
+                
+                
+                MDBottomNavigationItem:
+                    name: "Screen_Decoding"
+                    text: "Decoding"
+                    icon: 'alpha-d-circle'
+                    FitImage:
+                        source: "Dracula.jpg"
+                    
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        adaptive_size: True
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        padding: "30dp"
+                        spacing: "10dp"
+
+                        MDLabel:
+                            id: Inf_Message_De
+                            text: "DECODING"
+                            font_style: "H5"
+                            size_hint_y: None
+                            height:"50dp"
+                            halign: "center"
+                        MDBoxLayout:
+                            orientation: 'vertical'
+                            adaptive_size: True
+                            pos_hint: {'center_x': .5, 'center_y': .5}
+                            padding: "30dp"
+                            spacing: "10dp"
+                            MDTextField:
+                                id: Shifr_Vvely_id
+                                hint_text: "Введите шифр для расшифровки"
+                                helper_text: "Не забудь заполнить ключ ниже."
+                                helper_text_mode: "on_focus"
+                                size_hint_y: None
+                                halign: "center"
+                                font_size:'20sp'
+                                size_hint_x: None
+                                width: 300
+                                
+                                max_height: "200dp"
+                                mode: "fill"
+                                multiline: True
+                            MDTextField:
+                                id: Key_Shifr_Vvely_id
+                                hint_text: "Введите ключ(не более 16 символов)"
+                                helper_text: "По готовности нажмите на кнопку ниже."
+                                max_text_length: 16
+                                helper_text_mode: "on_focus"
+                                size_hint_y: None
+                                halign: "center"
+                                font_size:'20sp'
+                                size_hint_x: None
+                                width: 300
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                adaptive_size: True
+                                pos_hint: {'center_x': .5, 'center_y': .5}
+                                padding: "30dp"
+                                spacing: "10dp"
+                                MDRaisedButton:
+                                    id: Decoding_Button
+                                    text: "DECODING"
+                                    size_hint_y: None
+                                    halign: "center"
+                                    on_release: 
+                                        root.current = "result"
+                                        app.get_shifr_inputs()
+                                        app.messeg_v_result_for_shifr(Otvet)
+                                        app.messeg_for_oshibka_Decode(Infa)
+                                        app.time_Decod(Time)
+
+    MDScreen: #экран для получения ответа
+        name: "result"  
+        FitImage:
+            source: "Dracula.jpg"
+        MDToolbar:
+            id: toolbar_Otvet
+            md_bg_color: .945,.937,.94,.7
+            pos_hint: {"top": 1}
+            elevation: 10
+            title: "Ответ" 
+            specific_text_color: .55, .32, .61, .96
+            MDIconButton:
+                id: Test
+                icon: "keyboard-backspace"
+                on_release: root.current = "Hellow"
+                
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.2
+            height: self.minimum_height
+            padding: dp(20)
+            spacing: dp(10)
+            pos_hint: {"center_x": .5, "center_y": .5}             
+            MDTextField:
+                id: Otvet
+                
+                text: "None"
+                hint_text: "Ответ"
+                max_height: "200dp"
+                mode: "fill"
+                multiline: True
+                halign: "center"
+                font_style: "Button"
+                size_hint_y: None
+                fill_color: 0, 0, 0, .4
+            MDLabel:
+                id: Infa
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 0, 0.1)  
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "Выполнено успешно"
+                halign: "center"
+                font_style: "Button"
+                size_hint_y: None
+            MDLabel:
+                id: Time
+                canvas.before:
+                    Color:
+                        rgba: (0, 0, 0, 0.1)  
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                font_style: "Button"
+                text: "None"
+                halign: "center"
