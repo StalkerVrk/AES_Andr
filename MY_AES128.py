@@ -279,7 +279,6 @@ def add_round_key(state, key_schedule, round=0):
 
 
 def mul_by_02(num):
-    """The function multiplies by 2 in Galua space"""
     """Функция умножается на 2 в пространстве Галуа"""
 
     if num < 0x80: #0x80 это 128
